@@ -1,7 +1,10 @@
 import * as React from "react";
 import "./css/bootstrap.min.css";
 import "./css/fonts/font-awesome/css/font-awesome.css"
+
 import "./css/style.css"
+
+import "./css/custom.css"
 
 import { connect } from "react-redux";
 import { IRootState } from "src/redux/store";
@@ -20,7 +23,10 @@ import {
 
 interface ILandingPageProps { name: string }
 
-interface ILandingPageStates { navBarIsOpen: boolean }
+interface ILandingPageStates {
+  emailForWhitePaper: string,
+  navBarIsOpen: boolean,
+}
 
 const mapStateToProps = (state: IRootState) => {
   return { name: state.name }
@@ -31,13 +37,20 @@ class PureLandingPage extends React.Component<ILandingPageProps, ILandingPageSta
     super(props);
 
     this.state = {
-      navBarIsOpen: false
+      emailForWhitePaper: "",
+      navBarIsOpen: false,
     }
   }
 
   public toggleNavBar = () => {
     this.setState({
       navBarIsOpen: !this.state.navBarIsOpen
+    })
+  }
+
+  public typeEmailForWhitePaper = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({
+      emailForWhitePaper: e.target.value
     })
   }
 
@@ -52,7 +65,7 @@ class PureLandingPage extends React.Component<ILandingPageProps, ILandingPageSta
                 {/* Brand and toggle get grouped for better mobile display */}
                 <div className="navbar-header">
                   <NavbarBrand className="navbar-brand" href="index.html">
-                    <img src={Logo} className="img-fluid" alt="logo" />
+                    <img src={Logo} className="img-fluid nav-logo" alt="logo" />
                   </NavbarBrand>
                   <NavbarToggler
                     type="button"
@@ -78,56 +91,74 @@ class PureLandingPage extends React.Component<ILandingPageProps, ILandingPageSta
                       {" "}
                       <NavLink
                         className="nav-link page-scroll"
-                        href="#about"
+                        href="#Mission"
                         onClick={this.toggleNavBar}
                       >
-                        About <span className="sr-only">(current)</span>
+                        Mission <span className="sr-only">(current)</span>
                       </NavLink>{" "}
                     </NavItem>
                     <NavItem className="nav-item">
                       {" "}
                       <NavLink
                         className="nav-link page-scroll"
-                        href="#services"
+                        // href="#services"
                         onClick={this.toggleNavBar}
                       >
-                        Services <span className="sr-only">(current)</span>
+                        How-to <span className="sr-only">(current)</span>
                       </NavLink>{" "}
                     </NavItem>
                     <NavItem className="nav-item">
                       {" "}
                       <NavLink
                         className="nav-link page-scroll"
-                        href="#portfolio"
+                        href="#timeline"
                         onClick={this.toggleNavBar}
                       >
-                        Gallery <span className="sr-only">(current)</span>
+                        Timeline <span className="sr-only">(current)</span>
                       </NavLink>{" "}
                     </NavItem>
                     <NavItem className="nav-item">
                       {" "}
                       <NavLink
                         className="nav-link page-scroll"
-                        href="#testimonials"
+                        href="#projects"
                         onClick={this.toggleNavBar}
                       >
-                        Testimonials <span className="sr-only">(current)</span>
+                        Projects <span className="sr-only">(current)</span>
                       </NavLink>{" "}
                     </NavItem>
                     <NavItem className="nav-item">
                       {" "}
                       <NavLink
                         className="nav-link page-scroll"
-                        href="#contact"
+                        href="#teamMembers"
                         onClick={this.toggleNavBar}
                       >
-                        Contact <span className="sr-only">(current)</span>
+                        Team Members <span className="sr-only">(current)</span>
+                      </NavLink>{" "}
+                    </NavItem>
+                    <NavItem className="nav-item">
+                      {" "}
+                      <NavLink
+                        className="nav-link page-scroll"
+                        href="#partners"
+                        onClick={this.toggleNavBar}
+                      >
+                        Partners <span className="sr-only">(current)</span>
+                      </NavLink>{" "}
+                    </NavItem>
+                    <NavItem className="nav-item">
+                      {" "}
+                      <NavLink
+                        className="nav-link page-scroll"
+                        href="#onboarding"
+                        onClick={this.toggleNavBar}
+                      >
+                        Onboarding <span className="sr-only">(current)</span>
                       </NavLink>{" "}
                     </NavItem>
                   </Nav>
                 </Collapse>
-                {/* /.navbar-collapse */}
-                {/* /.container-fluid */}
               </Navbar>
             </div>
           </div>
@@ -138,11 +169,23 @@ class PureLandingPage extends React.Component<ILandingPageProps, ILandingPageSta
             <div className="overlay">
               <div className="container">
                 <div className="row">
-                  <div className="intro-text"> <span>Welcome to</span>
-                    <h1>Standout</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipiscing. <br />
-                      Duis sed dapibus leo nec ornare diam.</p>
-                    <a href="#about" className="btn btn-custom btn-lg page-scroll">Learn More</a> </div>
+                  <div className="intro-text">
+                    <h1>Media Projects</h1>
+                    <h1>Financed on Blockchain</h1>
+                    <p>Sign up today to receive our whitepaper and future updates</p>
+                    <input
+                      className={"hero-email"}
+                      type={"text"}
+                      placeholder={"Enter your email"}
+                      value={this.state.emailForWhitePaper}
+                      onChange={this.typeEmailForWhitePaper}
+                    />
+                    <input
+                      className="btn btn-custom btn-lg page-scroll hero-email-btn"
+                      type={"button"}
+                      value={"Learn More"}
+                    />
+                  </div>
                 </div>
               </div>
             </div>

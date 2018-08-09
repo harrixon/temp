@@ -1,0 +1,40 @@
+.navbar {
+    height: 15vh;
+}
+
+.nav-logo {
+    width: 50%;
+}
+
+.navbar-collapse {
+    margin-left: 20%;
+}
+
+#header .intro {
+    height: 85vh;
+}
+
+#header .overlay {
+    height: 85vh;
+}
+
+#header h1 {
+    padding: 7vh 0 0 0;
+}
+
+#header p {
+    margin-top: 5%;
+    margin-bottom: 1vh;
+}
+
+.hero-email {
+    border: white 1px solid;
+    width: 30vw;
+    height: 5vh;
+}
+
+.hero-email-btn {
+    margin-top: 0;
+    padding-top: 0;
+    height: 5vh;
+}
